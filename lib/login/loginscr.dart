@@ -2,13 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:whatsap/UIhelper/uihelp.dart';
 
 class loginscrn extends StatefulWidget {
-  const loginscrn({super.key});
-
   @override
   State<loginscrn> createState() => _loginscrnState();
 }
 
 class _loginscrnState extends State<loginscrn> {
+  String Country = "Pakistan";
+
+  List<String> countries = [
+    "America",
+    "Africa",
+    "Italy",
+    "Newyork",
+    "Pakistan",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,17 +36,77 @@ class _loginscrnState extends State<loginscrn> {
             SizedBox(height: 15),
             UIhelper.customtext(
               text: "WhatsApp will need to verify your phone",
-              height: 14,
+              height: 15,
             ),
             SizedBox(height: 6),
             UIhelper.customtext(
               text: "number. Carrier charges may apply.",
-              height: 14,
+              height: 15,
             ),
             SizedBox(height: 1),
             UIhelper.customsbutton(
-              buttonName: " What’s my number?",
+              buttonName: " What's my number?",
               callback: () {},
+            ),
+            SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.only(left: 65, right: 65),
+              child: DropdownButtonFormField(
+                items: countries.map((String countr) {
+                  return DropdownMenuItem(
+                    child: Text(countr.toString()),
+                    value: countr,
+                  );
+                }).toList(),
+                onChanged: (value) {
+                  setState(() {
+                    Country = value!;
+                  });
+                },
+                value: Country,
+                decoration: InputDecoration(
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xff00A884)),
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xff00A884)),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 50,
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: "+91",
+                      border: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xff00A884)),
+                      ),
+                      focusedBorder: UnderlineInputBorder(),
+                    ),
+                    keyboardType: TextInputType.number,
+                  ),
+                ),
+                SizedBox(width: 10),
+                SizedBox(
+                  width: 172,
+                  child: TextField(keyboardType: TextInputType.number),
+                ),
+              ],
+            ),
+            Container(
+              color: Colors.yellow,
+
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  ElevatedButton(onPressed: () {}, child: Text("data")),
+                ],
+              ),
             ),
           ],
         ),
