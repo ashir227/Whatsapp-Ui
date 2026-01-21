@@ -54,7 +54,10 @@ class UIhelper {
   }) {
     return TextButton(
       onPressed: callback,
-      child: Text(buttonName, style: TextStyle(color: Color(0xff0C42CC))),
+      child: Text(
+        buttonName,
+        style: TextStyle(color: color ?? Color(0xff0C42CC)),
+      ),
     );
   }
 }
