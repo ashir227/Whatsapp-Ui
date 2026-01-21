@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsap/Screens/Ver_num.dart';
 import 'package:whatsap/UIhelper/uihelp.dart';
 
 class loginscrn extends StatefulWidget {
@@ -98,18 +99,19 @@ class _loginscrnState extends State<loginscrn> {
                 ),
               ],
             ),
-            Container(
-              color: Colors.yellow,
-
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  ElevatedButton(onPressed: () {}, child: Text("data")),
-                ],
-              ),
-            ),
           ],
         ),
+      ),
+      floatingActionButton: UIhelper.customButton(
+        callback: () {
+          if (countries == "Pakistan") {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Ver_n()),
+            );
+          }
+        },
+        buttonName: "Next",
       ),
     );
   }
