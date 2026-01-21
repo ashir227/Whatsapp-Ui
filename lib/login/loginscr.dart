@@ -113,6 +113,7 @@ class _loginscrnState extends State<loginscrn> {
         },
         buttonName: "Next",
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
