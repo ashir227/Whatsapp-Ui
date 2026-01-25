@@ -95,29 +95,35 @@ class _loginscrnState extends State<loginscrn> {
         builder: (context, auth, _) {
           bool isValid = context.watch<Authprovider>().isvalid;
 
-          return FloatingActionButton(
-            backgroundColor: isValid ? Color(0xff00A884) : Colors.grey,
-            onPressed: isValid
-                ? () {
-                    print(
-                      context.watch<Authprovider>().Selectedcode +
-                          context.watch<Authprovider>().selectedcountry,
-                    );
-                  }
-                : null,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(
-                19,
-              ), // circular-ish like WhatsApp
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              child: Text(
-                "Next",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
+          return Container(
+            color: Colors.yellow,
+            child: FloatingActionButton(
+              backgroundColor: isValid ? Color(0xff00A884) : Colors.grey,
+              onPressed: isValid
+                  ? () {
+                      print(
+                        context.watch<Authprovider>().Selectedcode +
+                            context.watch<Authprovider>().selectedcountry,
+                      );
+                    }
+                  : null,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(
+                  19,
+                ), // circular-ish like WhatsApp
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 10,
+                ),
+                child: Text(
+                  "Next",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
                 ),
               ),
             ),
