@@ -47,13 +47,8 @@ class _loginscrnState extends State<loginscrn> {
               padding: const EdgeInsets.only(left: 65, right: 65),
               child: DropdownButtonFormField<String>(
                 value: context.watch<Authprovider>().selectedcountry,
-                items: 
-                context.watch<Authprovider>().
-                countries.map((c) {
-                  return DropdownMenuItem<String>(
-                    value: c, 
-                    child: Text(c
-                    ));
+                items: context.watch<Authprovider>().countries.map((c) {
+                  return DropdownMenuItem<String>(value: c, child: Text(c));
                 }).toList(),
                 onChanged: (Value) {
                   context.read<Authprovider>().changecountry(Value!);
@@ -82,36 +77,39 @@ class _loginscrnState extends State<loginscrn> {
                   width: 172,
                   child: TextField(
                     keyboardType: TextInputType.number,
-                    onChanged: (value){
-context.read<Authprovider>().setnum(value);
-
+                    onChanged: (value) {
+                      context.read<Authprovider>().setnum(value);
                     },
                     decoration: const InputDecoration(
-hintText: "Phone number",
-border: UnderlineInputBorder(),
-
-
+                      hintText: "Phone number",
+                      border: UnderlineInputBorder(),
                     ),
-
-                    ),
+                  ),
                 ),
               ],
             ),
           ],
         ),
       ),
-      floatingActionButton: UIhelper.customButton(
-        callback: () {
-          if ( == "Pakistan") {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => Ver_n()),
-            );
-          }
+      floatingActionButton: Consumer(
+        builder: (context, auth, _) {
+          return FloatingActionButton(
+            backgroundColor: context.watch<Authprovider>().isvalid
+                ? Color(0xff00A884)
+                : Colors.grey,
+
+            onPressed: context.watch<Authprovider>().isvalid
+                ? () {
+                    print(
+                      context.watch<Authprovider>().Selectedcode +
+                          context.watch<Authprovider>().selectedcountry,
+                    );
+                  }
+                : null,
+            child: const Icon(Icons.arrow_forward),
+          );
         },
-        buttonName: "Next",
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
