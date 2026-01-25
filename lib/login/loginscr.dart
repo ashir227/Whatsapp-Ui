@@ -91,38 +91,36 @@ class _loginscrnState extends State<loginscrn> {
           ],
         ),
       ),
-      floatingActionButton: Consumer<Authprovider>(
+      bottomNavigationBar: Consumer<Authprovider>(
         builder: (context, auth, _) {
           bool isValid = context.watch<Authprovider>().isvalid;
 
-          return Container(
-            color: Colors.yellow,
-            child: FloatingActionButton(
-              backgroundColor: isValid ? Color(0xff00A884) : Colors.grey,
-              onPressed: isValid
-                  ? () {
-                      print(
-                        context.watch<Authprovider>().Selectedcode +
-                            context.watch<Authprovider>().selectedcountry,
-                      );
-                    }
-                  : null,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(
-                  19,
-                ), // circular-ish like WhatsApp
-              ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10,
-                  vertical: 10,
+          return Padding(
+            padding: const EdgeInsets.all(16.0), // button ke around space
+            child: SizedBox(
+              width: double.infinity, // full width
+              height: 50, // WhatsApp style height
+              child: ElevatedButton(
+                onPressed: isValid
+                    ? () {
+                        print(
+                          context.watch<Authprovider>().Selectedcode +
+                              context.watch<Authprovider>().selectedcountry,
+                        );
+                      }
+                    : null,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: isValid ? Color(0xff00A884) : Colors.grey,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25), // circular edges
+                  ),
                 ),
                 child: Text(
                   "Next",
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
-                    fontSize: 16,
+                    fontSize: 18,
                   ),
                 ),
               ),
