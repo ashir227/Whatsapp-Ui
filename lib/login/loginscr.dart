@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:whatsap/Screens/Ver_num.dart';
 import 'package:whatsap/UIhelper/uihelp.dart';
+import 'package:whatsap/provider/provider_class.dart';
 
 class loginscrn extends StatefulWidget {
   @override
@@ -8,8 +10,6 @@ class loginscrn extends StatefulWidget {
 }
 
 class _loginscrnState extends State<loginscrn> {
- 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,9 +45,15 @@ class _loginscrnState extends State<loginscrn> {
             SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.only(left: 65, right: 65),
-              child: DropdownButtonFormField(items: ["Pakistan","India","Turkey","Japan"].map((c){
-                return
-              }), onChanged: onChanged)
+              child: DropdownButtonFormField<String>(
+                value: context.watch<Authprovider>().selectedcountry,
+                items: context.watch<Authprovider>().countries.map((c) {
+                  return DropdownMenuItem<String>(value: c, child: Text(c));
+                }).toList(),
+                onChanged: (Value) {
+                  context.watch<Authprovider>().changecountry(Value!);
+                },
+              ),
             ),
             SizedBox(height: 20),
             Row(
