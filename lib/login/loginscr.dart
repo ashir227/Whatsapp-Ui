@@ -47,11 +47,16 @@ class _loginscrnState extends State<loginscrn> {
               padding: const EdgeInsets.only(left: 65, right: 65),
               child: DropdownButtonFormField<String>(
                 value: context.watch<Authprovider>().selectedcountry,
-                items: context.watch<Authprovider>().countries.map((c) {
-                  return DropdownMenuItem<String>(value: c, child: Text(c));
+                items: 
+                context.watch<Authprovider>().
+                countries.map((c) {
+                  return DropdownMenuItem<String>(
+                    value: c, 
+                    child: Text(c
+                    ));
                 }).toList(),
                 onChanged: (Value) {
-                  context.watch<Authprovider>().changecountry(Value!);
+                  context.read<Authprovider>().changecountry(Value!);
                 },
               ),
             ),
@@ -63,7 +68,7 @@ class _loginscrnState extends State<loginscrn> {
                   width: 50,
                   child: TextField(
                     decoration: InputDecoration(
-                      hintText: "+91",
+                      hintText: context.watch<Authprovider>().Selectedcode,
                       border: UnderlineInputBorder(
                         borderSide: BorderSide(color: Color(0xff00A884)),
                       ),
@@ -75,7 +80,20 @@ class _loginscrnState extends State<loginscrn> {
                 SizedBox(width: 10),
                 SizedBox(
                   width: 172,
-                  child: TextField(keyboardType: TextInputType.number),
+                  child: TextField(
+                    keyboardType: TextInputType.number,
+                    onChanged: (value){
+context.read<Authprovider>().setnum(value);
+
+                    },
+                    decoration: const InputDecoration(
+hintText: "Phone number",
+border: UnderlineInputBorder(),
+
+
+                    ),
+
+                    ),
                 ),
               ],
             ),
@@ -84,7 +102,7 @@ class _loginscrnState extends State<loginscrn> {
       ),
       floatingActionButton: UIhelper.customButton(
         callback: () {
-          if (countries == "Pakistan") {
+          if ( == "Pakistan") {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => Ver_n()),

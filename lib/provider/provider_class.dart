@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
-class authprovider extends ChangeNotifier {
+class Authprovider extends ChangeNotifier {
   String selectedcountry = "Pakistan";
   String Selectedcode = "+92";
+  String phonenum = "";
+  List<String> countries = ["Pakistan", "India", "turkey", "Japan"];
   void changecountry(String country) {
     selectedcountry = country;
     if (country == "Pakistan") {
@@ -14,6 +16,11 @@ class authprovider extends ChangeNotifier {
     } else if (country == "Japan") {
       Selectedcode = "80";
     }
+    notifyListeners();
+  }
+
+  void setnum(String value) {
+    phonenum = value;
     notifyListeners();
   }
 }
