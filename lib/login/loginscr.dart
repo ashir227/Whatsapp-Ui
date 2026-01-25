@@ -91,14 +91,13 @@ class _loginscrnState extends State<loginscrn> {
           ],
         ),
       ),
-      floatingActionButton: Consumer(
+      floatingActionButton: Consumer<Authprovider>(
         builder: (context, auth, _) {
-          return FloatingActionButton(
-            backgroundColor: context.watch<Authprovider>().isvalid
-                ? Color(0xff00A884)
-                : Colors.grey,
+          bool isValid = context.watch<Authprovider>().isvalid;
 
-            onPressed: context.watch<Authprovider>().isvalid
+          return FloatingActionButton(
+            backgroundColor: isValid ? Color(0xff00A884) : Colors.grey,
+            onPressed: isValid
                 ? () {
                     print(
                       context.watch<Authprovider>().Selectedcode +
@@ -106,7 +105,22 @@ class _loginscrnState extends State<loginscrn> {
                     );
                   }
                 : null,
-            child: const Icon(Icons.arrow_forward),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(
+                30,
+              ), // circular-ish like WhatsApp
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: Text(
+                "Next",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
+              ),
+            ),
           );
         },
       ),

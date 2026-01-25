@@ -14,7 +14,7 @@ class Authprovider extends ChangeNotifier {
     } else if (country == "turkey") {
       Selectedcode = "+90";
     } else if (country == "Japan") {
-      Selectedcode = "80";
+      Selectedcode = "+80";
     }
     notifyListeners();
   }
@@ -23,4 +23,6 @@ class Authprovider extends ChangeNotifier {
     phonenum = value;
     notifyListeners();
   }
+
+  bool get isvalid => phonenum == 11;
 }
