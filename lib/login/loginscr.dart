@@ -107,11 +107,11 @@ class _loginscrnState extends State<loginscrn> {
                 : null,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(
-                30,
+                19,
               ), // circular-ish like WhatsApp
             ),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: Text(
                 "Next",
                 style: TextStyle(
