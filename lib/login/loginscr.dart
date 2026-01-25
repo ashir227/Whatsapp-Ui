@@ -8,15 +8,7 @@ class loginscrn extends StatefulWidget {
 }
 
 class _loginscrnState extends State<loginscrn> {
-  String Country = "Pakistan";
-
-  List<String> countries = [
-    "America",
-    "Africa",
-    "Italy",
-    "Newyork",
-    "Pakistan",
-  ];
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -53,28 +45,9 @@ class _loginscrnState extends State<loginscrn> {
             SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.only(left: 65, right: 65),
-              child: DropdownButtonFormField(
-                items: countries.map((String countr) {
-                  return DropdownMenuItem(
-                    child: Text(countr.toString()),
-                    value: countr,
-                  );
-                }).toList(),
-                onChanged: (value) {
-                  setState(() {
-                    Country = value!;
-                  });
-                },
-                value: Country,
-                decoration: InputDecoration(
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xff00A884)),
-                  ),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xff00A884)),
-                  ),
-                ),
-              ),
+              child: DropdownButtonFormField(items: ["Pakistan","India","Turkey","Japan"].map((c){
+                return
+              }), onChanged: onChanged)
             ),
             SizedBox(height: 20),
             Row(
