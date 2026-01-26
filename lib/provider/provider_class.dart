@@ -19,8 +19,8 @@ class Authprovider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setnum(String value) {
-    phonenum = value;
+  void setnum(int value) {
+    int phonenum = value;
     notifyListeners();
   }
 
