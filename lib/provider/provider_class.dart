@@ -19,10 +19,10 @@ class Authprovider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setnum(int value) {
-    int phonenum = value;
+  void setnum(String value) {
+    phonenum = value;
     notifyListeners();
   }
 
-  bool get isvalid => phonenum == 11;
+  bool get isvalid => phonenum.length == 11;
 }
