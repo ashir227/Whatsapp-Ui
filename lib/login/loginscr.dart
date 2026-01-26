@@ -76,6 +76,7 @@ class _loginscrnState extends State<loginscrn> {
                 SizedBox(
                   width: 172,
                   child: TextField(
+                    focusNode: FocusNode(),
                     keyboardType: TextInputType.number,
                     onChanged: (value) {
                       context.read<Authprovider>().setnum(value);
