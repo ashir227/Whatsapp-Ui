@@ -14,19 +14,16 @@ class _loginscrState extends State<loginscr> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        title: UIhelper.customtext(
-          text: "Enter your phone number",
-          height: 20,
-          color: Color(0xff00A884),
-          fontweight: FontWeight.w700,
-        ),
-      ),
       body: Center(
         child: Column(
           children: [
+            SizedBox(height: 45),
+            UIhelper.customtext(
+              text: "Enter your phone number",
+              height: 20,
+              color: Color(0xff00A884),
+              fontweight: FontWeight.w700,
+            ),
             SizedBox(height: 15),
             UIhelper.customtext(
               text: "WhatsApp will need to verify your phone",
