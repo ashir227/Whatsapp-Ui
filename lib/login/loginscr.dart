@@ -103,17 +103,23 @@ class _loginscrState extends State<loginscr> {
               width: double.infinity, // full width
               height: 50, // WhatsApp style height
               child: ElevatedButton(
-                onPressed: isValid
-                    ? () {
-                        final auth = context.read<Authprovider>();
-                        if (auth.isvalid) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => Otp()),
-                          );
-                        }
-                      }
-                    : null,
+                onPressed: () {
+                  final auth = context.read<Authprovider>();
+                  if (auth.isvalid) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Otp()),
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text("Please enter a valid phone number"),
+                        backgroundColor: Color(0xff00A884),
+                        duration: Duration(seconds: 3),
+                      ),
+                    );
+                  }
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: isValid ? Color(0xff00A884) : Colors.grey,
                   shape: RoundedRectangleBorder(
