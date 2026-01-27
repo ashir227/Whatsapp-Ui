@@ -60,7 +60,7 @@ class _OnboardingState extends State<Onboarding> {
         callback: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => loginscrn()),
+            MaterialPageRoute(builder: (context) => loginscr()),
           );
         },
         buttonName: "Agree and continue",
