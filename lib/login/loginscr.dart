@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:whatsap/Screens/Otp_scr.dart';
 import 'package:whatsap/Screens/Ver_num.dart';
 import 'package:whatsap/UIhelper/uihelp.dart';
 import 'package:whatsap/provider/provider_class.dart';
 
-class loginscrn extends StatefulWidget {
+class loginscr extends StatefulWidget {
   @override
-  State<loginscrn> createState() => _loginscrnState();
+  State<loginscr> createState() => _loginscrState();
 }
 
-class _loginscrnState extends State<loginscrn> {
+class _loginscrState extends State<loginscr> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -104,10 +105,13 @@ class _loginscrnState extends State<loginscrn> {
               child: ElevatedButton(
                 onPressed: isValid
                     ? () {
-                        print(
-                          context.watch<Authprovider>().Selectedcode +
-                              context.watch<Authprovider>().selectedcountry,
-                        );
+                        final auth = context.read<Authprovider>();
+                        if (auth.isvalid) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => Otp()),
+                          );
+                        }
                       }
                     : null,
                 style: ElevatedButton.styleFrom(
