@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:whatsap/UIhelper/uihelp.dart';
 
 class Otp extends StatefulWidget {
-  const Otp({super.key});
+  final dynamic phonenum;
+
+  const Otp({super.key, required this.phonenum});
 
   @override
   State<Otp> createState() => _OtpState();
@@ -23,7 +25,10 @@ class _OtpState extends State<Otp> {
               fontweight: FontWeight.w700,
             ),
             SizedBox(height: 20),
-            // UIhelper.customtext(text: "You’ve tried to register ${phonenum}", height: height)
+            UIhelper.customtext(
+              text: "You’ve tried to register ${widget.phonenum}",
+              height: 20,
+            ),
           ],
         ),
       ),
