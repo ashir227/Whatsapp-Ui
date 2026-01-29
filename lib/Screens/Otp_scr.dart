@@ -22,8 +22,8 @@ class _OtpState extends State<Otp> {
               color: Color(0xff00A884),
               fontweight: FontWeight.w700,
             ),
-            SizedBox(height: 20,),
-            UIhelper.customtext(text: "You’ve tried to register ${phonenum}", height: height)
+            SizedBox(height: 20),
+            // UIhelper.customtext(text: "You’ve tried to register ${phonenum}", height: height)
           ],
         ),
       ),
