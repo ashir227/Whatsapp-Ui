@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:whatsap/UIhelper/uihelp.dart';
@@ -38,12 +39,18 @@ class _OtpState extends State<Otp> {
               text: "recently. Wait before requesting an sms or a call.",
               height: 15,
             ),
-            UIhelper.customtext(text: " with your code", height: 15),
+            UIhelper.customtext(text: " ", height: 15),
             TextButton(
               onPressed: () {
                 Navigator.pop(context);
               },
               child: Text("Wrong number?"),
+            ),
+            RichText(
+              text: TextSpan(
+                style: const TextStyle(color: Colors.black, fontSize: 15),
+                children: [TextSpan(text: "with your code")],
+              ),
             ),
           ],
         ),
