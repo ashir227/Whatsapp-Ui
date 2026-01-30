@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:whatsap/UIhelper/uihelp.dart';
 
 class Otp extends StatefulWidget {
@@ -10,12 +12,14 @@ class Otp extends StatefulWidget {
   State<Otp> createState() => _OtpState();
 }
 
+// String fullname = context.read<AuthProvider>().
 class _OtpState extends State<Otp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(height: 45),
             UIhelper.customtext(
@@ -28,11 +32,18 @@ class _OtpState extends State<Otp> {
             UIhelper.customtext(
               text: "You’ve tried to register ${widget.phonenum} ",
 
-              height: 20,
+              height: 15,
             ),
             UIhelper.customtext(
               text: "recently. Wait before requesting an sms or a call.",
-              height: 20,
+              height: 15,
+            ),
+            UIhelper.customtext(text: " with your code", height: 15),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text("Wrong number?"),
             ),
           ],
         ),
