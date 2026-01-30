@@ -39,17 +39,25 @@ class _OtpState extends State<Otp> {
               text: "recently. Wait before requesting an sms or a call.",
               height: 15,
             ),
-            UIhelper.customtext(text: " ", height: 15),
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text("Wrong number?"),
-            ),
+
+            // UIhelper.customtext(text: " ", height: 15),
             RichText(
               text: TextSpan(
                 style: const TextStyle(color: Colors.black, fontSize: 15),
-                children: [TextSpan(text: "with your code")],
+                children: [
+                  const TextSpan(text: "with your code "),
+                  TextSpan(
+                    text: "Wrong number?",
+                    style: const TextStyle(
+                      color: Color(0xff00A884),
+                      fontWeight: FontWeight.w600,
+                    ),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        Navigator.pop(context);
+                      },
+                  ),
+                ],
               ),
             ),
           ],
