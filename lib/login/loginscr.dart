@@ -105,7 +105,9 @@ class _loginscrState extends State<loginscr> {
                   if (auth.isvalid) {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Otp()),
+                      MaterialPageRoute(
+                        builder: (context) => Otp(phonenum: auth),
+                      ),
                     );
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(

@@ -26,7 +26,12 @@ class _OtpState extends State<Otp> {
             ),
             SizedBox(height: 20),
             UIhelper.customtext(
-              text: "You’ve tried to register ${widget.phonenum}",
+              text: "You’ve tried to register ${widget.phonenum} ",
+
+              height: 20,
+            ),
+            UIhelper.customtext(
+              text: "recently. Wait before requesting an sms or a call.",
               height: 20,
             ),
           ],
