@@ -19,6 +19,7 @@ class _OtpState extends State<Otp> {
     6,
     (_) => TextEditingController(),
   );
+  final List<FocusNode> focusNode = List.generate(6, (_) => FocusNode());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,7 +74,7 @@ class _OtpState extends State<Otp> {
                     keyboardType: TextInputType.number,
                     textAlign: TextAlign.center,
                     controller: controllers[index],
-                    // focusNode: focusNodes[index],
+                    focusNode: focusNode[index],
                   ),
                 );
               }),
