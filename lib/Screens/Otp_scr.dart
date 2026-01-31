@@ -60,6 +60,18 @@ class _OtpState extends State<Otp> {
                 ],
               ),
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: List.generate(6, (index) {
+                return SizedBox(
+                  width: 45,
+                  child: TextField(
+                    // controller: controllers[index],
+                    // focusNode: focusNodes[index],
+                  ),
+                );
+              }),
+            ),
           ],
         ),
       ),
