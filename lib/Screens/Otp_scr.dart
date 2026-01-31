@@ -15,7 +15,10 @@ class Otp extends StatefulWidget {
 
 // String fullname = context.read<AuthProvider>().
 class _OtpState extends State<Otp> {
-  TextEditingController controllers = TextEditingController();
+  final List<TextEditingController> controllers = List.generate(
+    6,
+    (_) => TextEditingController(),
+  );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +73,7 @@ class _OtpState extends State<Otp> {
                     keyboardType: TextInputType.number,
                     textAlign: TextAlign.center,
                     controller: controllers[index],
-                    focusNode: focusNodes[index],
+                    // focusNode: focusNodes[index],
                   ),
                 );
               }),
