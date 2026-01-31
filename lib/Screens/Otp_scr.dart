@@ -7,7 +7,7 @@ import 'package:whatsap/UIhelper/uihelp.dart';
 class Otp extends StatefulWidget {
   final dynamic phonenum;
 
-  const Otp({super.key, required this.phonenum});
+  Otp({super.key, required this.phonenum});
 
   @override
   State<Otp> createState() => _OtpState();
@@ -15,6 +15,7 @@ class Otp extends StatefulWidget {
 
 // String fullname = context.read<AuthProvider>().
 class _OtpState extends State<Otp> {
+  TextEditingController controllers = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,8 +67,10 @@ class _OtpState extends State<Otp> {
                 return SizedBox(
                   width: 45,
                   child: TextField(
-                    // controller: controllers[index],
-                    // focusNode: focusNodes[index],
+                    keyboardType: TextInputType.number,
+                    textAlign: TextAlign.center,
+                    controller: controllers[index],
+                    focusNode: focusNodes[index],
                   ),
                 );
               }),
