@@ -74,7 +74,7 @@ class _OtpState extends State<Otp> {
                     keyboardType: TextInputType.number,
                     textAlign: TextAlign.center,
                     controller: controllers[index],
-                    focusNode: focusNode[index],
+                    // focusNode: focusNode[index],
                   ),
                 );
               }),
