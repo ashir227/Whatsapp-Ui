@@ -1,14 +1,18 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+
+    // Flutter Gradle plugin (ALWAYS after Android + Kotlin)
     id("dev.flutter.flutter-gradle-plugin")
+
+    // 🔥 Firebase Google Services plugin
+    id("com.google.gms.google-services")
 }
 
 android {
     namespace = "com.example.whatsap"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = "26.1.10909125" // 🔥 FIX
+    ndkVersion = "26.1.10909125"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -29,11 +33,21 @@ android {
 
     buildTypes {
         release {
+            // Flutter debug signing for now
             signingConfig = signingConfigs.getByName("debug")
+            isMinifyEnabled = false
         }
     }
 }
 
+dependencies {
+
+    // 🔥 Firebase BOM (controls all Firebase versions)
+    implementation(platform("com.google.firebase:firebase-bom:34.9.0"))
+
+    // 🔥 Firebase Auth (OTP / Phone Auth)
+    implementation("com.google.firebase:firebase-auth")
+}
 
 flutter {
     source = "../.."
