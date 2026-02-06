@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "785358268600",
+    "project_id": "whatsapp-otp-282e0",
+    "storage_bucket": "whatsapp-otp-282e0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:785358268600:android:71b902b667ec141657ac4d",
+        "android_client_info": {
+          "package_name": "com.example.whatsap"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATxDCLCGyYWvKHLmszLv8B6BfPNSGKoW0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
