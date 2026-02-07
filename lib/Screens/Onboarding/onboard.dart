@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsap/UIhelper/uihelp.dart';
 import 'package:whatsap/login/loginscr.dart';
@@ -10,6 +12,7 @@ class Onboarding extends StatefulWidget {
 }
 
 class _OnboardingState extends State<Onboarding> {
+  TextEditingController phonenum = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,10 +60,13 @@ class _OnboardingState extends State<Onboarding> {
         ),
       ),
       floatingActionButton: UIhelper.customButton(
-        callback: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => loginscr()),
+        callback: () async {
+          await FirebaseAuth.instance.verifyPhoneNumber(
+            verificationCompleted: (PhoneAuthCredential credentrial) {},
+            verificationFailed: (FirebaseException Ex) {},
+            codeSent: (String verificationid, int? resendtoken) {},
+            codeAutoRetrievalTimeout: (String verificationId) {},
+            phoneNumber: phonenum.text.toString(),
           );
         },
         buttonName: "Agree and continue",
