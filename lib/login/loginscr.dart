@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:whatsap/Screens/Otp_scr.dart';
@@ -11,6 +13,7 @@ class loginscr extends StatefulWidget {
 }
 
 class _loginscrState extends State<loginscr> {
+  TextEditingController phonenum = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,14 +103,27 @@ class _loginscrState extends State<loginscr> {
               width: double.infinity, // full width
               height: 50, // WhatsApp style height
               child: ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
                   final auth = context.read<Authprovider>();
                   if (auth.isvalid) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Otp(verificationid: auth),
-                      ),
+                    String fullName = auth.Selectedcode + auth.phonenum;
+                    await FirebaseAuth.instance.verifyPhoneNumber(
+                      verificationCompleted:
+                          (PhoneAuthCredential credential) {},
+                      verificationFailed: (FirebaseException ex) {},
+                      codeSent: (String verificationid, int? resendtoken) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Otp(
+                              verificationId: verificationid,
+                              phoneNumber: auth.selectedcountry + auth.phonenum,
+                            ),
+                          ),
+                        );
+                      },
+                      codeAutoRetrievalTimeout: (String verificationid) {},
+                      phoneNumber: fullName,
                     );
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
