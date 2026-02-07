@@ -61,20 +61,7 @@ class _OnboardingState extends State<Onboarding> {
         ),
       ),
       floatingActionButton: UIhelper.customButton(
-        callback: () async {
-          await FirebaseAuth.instance.verifyPhoneNumber(
-            verificationCompleted: (PhoneAuthCredential credentrial) {},
-            verificationFailed: (FirebaseException Ex) {},
-            codeSent: (String verificationid, int? resendtoken) {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => Otp()),
-              // );
-            },
-            codeAutoRetrievalTimeout: (String verificationid) {},
-            phoneNumber: phonenum.text.toString(),
-          );
-        },
+        callback: () {},
         buttonName: "Agree and continue",
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
