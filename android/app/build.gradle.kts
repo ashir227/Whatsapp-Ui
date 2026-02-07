@@ -46,7 +46,8 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:34.9.0"))
 
     // 🔥 Firebase Auth (OTP / Phone Auth)
-    implementation("com.google.firebase:firebase-auth")
+    implementation 'com.google.firebase:firebase-analytics'
+
 }
 
 flutter {
