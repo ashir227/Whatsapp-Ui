@@ -106,7 +106,7 @@ class _loginscrState extends State<loginscr> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Otp(phonenum: auth),
+                        builder: (context) => Otp(verificationid: auth),
                       ),
                     );
                   } else {
