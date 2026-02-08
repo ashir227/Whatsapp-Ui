@@ -17,11 +17,12 @@ class _loginscrState extends State<loginscr> {
       body: Center(
         child: Column(
           children: [
-            const SizedBox(height: 45),
+            const SizedBox(height: 50),
             UIhelper.customtext(
               text: "Enter your phone number",
               height: 20,
               color: const Color(0xff00A884),
+
               fontweight: FontWeight.w700,
             ),
             const SizedBox(height: 20),

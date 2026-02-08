@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsap/UIhelper/uihelp.dart';
 
 class Profile_info extends StatefulWidget {
   const Profile_info({super.key});
@@ -10,6 +11,26 @@ class Profile_info extends StatefulWidget {
 class _Profile_infoState extends State<Profile_info> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: Center(
+        child: Column(
+          children: [
+            SizedBox(height: 50),
+            UIhelper.customtext(
+              text: "Profile info",
+              height: 20,
+              color: Color(0xff00A884),
+              fontweight: FontWeight.w700,
+            ),
+            SizedBox(height: 70),
+            UIhelper.customtext(
+              text: "Please provide your name and an optional",
+              height: 20,
+            ),
+            UIhelper.customtext(text: "profile photo", height: 20),
+          ],
+        ),
+      ),
+    );
   }
 }
