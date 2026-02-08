@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsap/UIhelper/uihelp.dart';
 
@@ -23,16 +22,12 @@ class _OtpState extends State<Otp> {
     (_) => TextEditingController(),
   );
 
+  String getOtp() => controllers.map((c) => c.text).join();
+
   @override
   void dispose() {
-    for (var c in controllers) {
-      c.dispose();
-    }
+    for (var c in controllers) c.dispose();
     super.dispose();
-  }
-
-  String getOtp() {
-    return controllers.map((c) => c.text).join();
   }
 
   @override
@@ -45,41 +40,16 @@ class _OtpState extends State<Otp> {
             UIhelper.customtext(
               text: "Verifying your number",
               height: 20,
-              color: Color(0xff00A884),
+              color: const Color(0xff00A884),
               fontweight: FontWeight.w700,
             ),
             const SizedBox(height: 20),
             UIhelper.customtext(
-              text: "Waiting to automatically detect an SMS sent to",
+              text:
+                  "Waiting to automatically detect an SMS sent to ${widget.phoneNumber}",
               height: 15,
             ),
-            UIhelper.customtext(
-              text: widget.phoneNumber, // ✅ correct
-              height: 15,
-            ),
-
             const SizedBox(height: 20),
-
-            RichText(
-              text: TextSpan(
-                style: const TextStyle(color: Colors.black, fontSize: 15),
-                children: [
-                  const TextSpan(text: "Enter the 6-digit code. "),
-                  TextSpan(
-                    text: "Wrong number?",
-                    style: const TextStyle(
-                      color: Color(0xff00A884),
-                      fontWeight: FontWeight.w600,
-                    ),
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () => Navigator.pop(context),
-                  ),
-                ],
-              ),
-            ),
-
-            const SizedBox(height: 20),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: List.generate(6, (index) {
@@ -95,40 +65,11 @@ class _OtpState extends State<Otp> {
                 );
               }),
             ),
-
-            const SizedBox(height: 80),
-
+            const SizedBox(height: 40),
             ElevatedButton(
-              onPressed: () async {
-                String otp = getOtp();
-
-                if (otp.length != 6) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text("Enter valid 6 digit OTP")),
-                  );
-                  return;
-                }
-
-                try {
-                  PhoneAuthCredential credential = PhoneAuthProvider.credential(
-                    verificationId: widget.verificationId,
-                    smsCode: otp,
-                  );
-
-                  await FirebaseAuth.instance.signInWithCredential(credential);
-
-                  // ✅ SUCCESS
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text("OTP Verified Successfully")),
-                  );
-                } catch (e) {
-                  ScaffoldMessenger.of(
-                    context,
-                  ).showSnackBar(SnackBar(content: Text("Invalid OTP")));
-                }
-              },
+              onPressed: getOtp().length == 6 ? _verifyOtp : null,
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xff00A884),
+                backgroundColor: const Color(0xff00A884),
               ),
               child: const Text("Verify"),
             ),
@@ -136,5 +77,25 @@ class _OtpState extends State<Otp> {
         ),
       ),
     );
+  }
+
+  void _verifyOtp() async {
+    try {
+      final credential = PhoneAuthProvider.credential(
+        verificationId: widget.verificationId,
+        smsCode: getOtp(),
+      );
+      await FirebaseAuth.instance.signInWithCredential(credential);
+
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("OTP Verified Successfully")),
+      );
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text("Invalid OTP")));
+    }
   }
 }
