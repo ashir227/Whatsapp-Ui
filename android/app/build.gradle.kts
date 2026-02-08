@@ -12,7 +12,7 @@ plugins {
 android {
     namespace = "com.example.whatsap"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = "26.1.10909125"
+    ndkVersion = "27.0.12077973"   // ✅ UPGRADED
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -31,13 +31,21 @@ android {
         versionName = flutter.versionName
     }
 
-    buildTypes {
-        release {
-            // Flutter debug signing for now
-            signingConfig = signingConfigs.getByName("debug")
-            isMinifyEnabled = false
-        }
+buildTypes {
+    release {
+        signingConfig = signingConfigs.getByName("debug")
+
+        // 🔥 REQUIRED FIX
+        isMinifyEnabled = true
+        isShrinkResources = true
+
+        proguardFiles(
+            getDefaultProguardFile("proguard-android-optimize.txt"),
+            "proguard-rules.pro"
+        )
     }
+}
+
 }
 
 dependencies {

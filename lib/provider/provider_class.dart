@@ -24,7 +24,7 @@ class Authprovider extends ChangeNotifier {
     notifyListeners();
   }
 
-  bool get isvalid => phonenum.length == 11;
+  bool get isvalid => phonenum.length == 13;
 }
 
 class otp extends ChangeNotifier {}

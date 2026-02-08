@@ -61,7 +61,12 @@ class _OnboardingState extends State<Onboarding> {
         ),
       ),
       floatingActionButton: UIhelper.customButton(
-        callback: () {},
+        callback: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => loginscr()),
+          );
+        },
         buttonName: "Agree and continue",
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
