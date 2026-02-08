@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsap/UIhelper/uihelp.dart';
+import 'package:whatsap/login/Profileinfo.dart';
 
 class Otp extends StatefulWidget {
   final String verificationId;
@@ -22,11 +23,17 @@ class _OtpState extends State<Otp> {
     (_) => TextEditingController(),
   );
 
+  final List<FocusNode> focusNodes = List.generate(
+    6,
+    (_) => FocusNode(),
+  ); // 🔹 Added focus nodes
+
   String getOtp() => controllers.map((c) => c.text).join();
 
   @override
   void dispose() {
     for (var c in controllers) c.dispose();
+    for (var f in focusNodes) f.dispose(); // 🔹 Dispose focus nodes
     super.dispose();
   }
 
@@ -57,21 +64,51 @@ class _OtpState extends State<Otp> {
                   width: 45,
                   child: TextField(
                     controller: controllers[index],
+                    focusNode: focusNodes[index], // 🔹 Set focus node
                     keyboardType: TextInputType.number,
                     textAlign: TextAlign.center,
                     maxLength: 1,
                     decoration: const InputDecoration(counterText: ""),
+                    onChanged: (value) {
+                      if (value.length == 1 && index < 5) {
+                        // 🔹 Move to next box automatically
+                        focusNodes[index + 1].requestFocus();
+                      } else if (value.isEmpty && index > 0) {
+                        // 🔹 Backspace moves to previous
+                        focusNodes[index - 1].requestFocus();
+                      }
+
+                      setState(() {}); // 🔹 Update Next button enabled
+                    },
                   ),
                 );
               }),
             ),
             const SizedBox(height: 40),
-            ElevatedButton(
-              onPressed: getOtp().length == 6 ? _verifyOtp : null,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xff00A884),
+            SizedBox(
+              width: 200,
+              height: 50,
+              child: ElevatedButton(
+                onPressed: getOtp().length == 6
+                    ? _verifyOtp
+                    : null, // 🔹 Enable only if 6 digits
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: getOtp().length == 6
+                      ? const Color(0xff00A884)
+                      : Colors.grey, // 🔹 Change color dynamically
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                ),
+                child: const Text(
+                  "Next",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
               ),
-              child: const Text("Verify"),
             ),
           ],
         ),
@@ -88,8 +125,9 @@ class _OtpState extends State<Otp> {
       await FirebaseAuth.instance.signInWithCredential(credential);
 
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("OTP Verified Successfully")),
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Profile_info()),
       );
     } catch (e) {
       if (!mounted) return;
