@@ -52,10 +52,27 @@ class _OtpState extends State<Otp> {
             ),
             const SizedBox(height: 20),
             UIhelper.customtext(
-              text:
-                  "Waiting to automatically detect an SMS sent to ${widget.phoneNumber}",
+              text: "You’ve tried to register ${widget.phoneNumber}",
               height: 15,
             ),
+            UIhelper.customtext(
+              text: "recently. Wait before requesting an sms or a call",
+              height: 15,
+            ),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                UIhelper.customtext(text: "with your code.", height: 15),
+                UIhelper.customsbutton(
+                  buttonName: "Wrong number?",
+                  callback: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
+            ),
+
             const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
