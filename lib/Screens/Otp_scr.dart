@@ -45,13 +45,6 @@ class _OtpState extends State<Otp> {
           children: [
             const SizedBox(height: 45),
             UIhelper.customtext(
-              text: "Verifying your number",
-              height: 20,
-              color: const Color(0xff00A884),
-              fontweight: FontWeight.w700,
-            ),
-            const SizedBox(height: 20),
-            UIhelper.customtext(
               text: "You’ve tried to register ${widget.phoneNumber}",
               height: 15,
             ),
