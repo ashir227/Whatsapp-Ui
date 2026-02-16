@@ -14,7 +14,8 @@ class _Profile_infoState extends State<Profile_info> {
     return Scaffold(
       body: Center(
         child: Column(
-          // crossAxisAlignment: CrossAxisAlignment.center,
+          // mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(height: 50),
             UIhelper.customtext(
@@ -26,9 +27,9 @@ class _Profile_infoState extends State<Profile_info> {
             SizedBox(height: 70),
             UIhelper.customtext(
               text: "Please provide your name and an optional",
-              height: 20,
+              height: 16,
             ),
-            UIhelper.customtext(text: "profile photo", height: 20),
+            UIhelper.customtext(text: "profile photo", height: 16),
           ],
         ),
       ),

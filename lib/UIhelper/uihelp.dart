@@ -36,6 +36,7 @@ class UIhelper {
     FontWeight? fontweight,
   }) {
     return Text(
+      textAlign: TextAlign.center,
       text,
       style: TextStyle(
         fontSize: height,
