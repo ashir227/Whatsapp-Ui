@@ -14,6 +14,7 @@ class _Profile_infoState extends State<Profile_info> {
     return Scaffold(
       body: Center(
         child: Column(
+          // crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(height: 50),
             UIhelper.customtext(
