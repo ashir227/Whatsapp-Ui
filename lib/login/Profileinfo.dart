@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whatsap/UIhelper/uihelp.dart';
+import 'dart:io';
+import 'package:image_picker/image_picker.dart';
 
 class Profile_info extends StatefulWidget {
   const Profile_info({super.key});
@@ -17,7 +19,7 @@ class _Profile_infoState extends State<Profile_info> {
           // mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 50),
+            SizedBox(height: 80),
             UIhelper.customtext(
               text: "Profile info",
               height: 20,
