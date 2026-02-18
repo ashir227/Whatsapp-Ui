@@ -30,4 +30,6 @@ class Authprovider extends ChangeNotifier {
     // number part only, without country code
     return phonenum.length >= 7 && phonenum.length <= 11;
   }
+
+  void imagepick() {}
 }
