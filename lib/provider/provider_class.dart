@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Authprovider extends ChangeNotifier {
   String selectedcountry = "Pakistan";
@@ -30,6 +33,17 @@ class Authprovider extends ChangeNotifier {
     // number part only, without country code
     return phonenum.length >= 7 && phonenum.length <= 11;
   }
+}
 
-  void imagepick() {}
+class profilepro extends ChangeNotifier {
+  File? _image;
+
+  File? get image => _image;
+
+  final ImagePicker _picker = ImagePicker();
+  Future<void> pickImage() async {
+    final XFile? pickedfile = await _picker.pickImage(
+      source: ImageSource.gallery,
+    );
+  }
 }
