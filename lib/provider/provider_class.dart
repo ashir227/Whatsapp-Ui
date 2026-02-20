@@ -45,5 +45,9 @@ class profilepro extends ChangeNotifier {
     final XFile? pickedfile = await _picker.pickImage(
       source: ImageSource.gallery,
     );
+    if (pickedfile != null) {
+      _image = File(pickedfile.path);
+      notifyListeners();
+    }
   }
 }
