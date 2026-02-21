@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:whatsap/UIhelper/uihelp.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
+import 'package:whatsap/provider/provider_class.dart';
 
 class Profile_info extends StatefulWidget {
   const Profile_info({super.key});
@@ -32,6 +34,35 @@ class _Profile_infoState extends State<Profile_info> {
               height: 16,
             ),
             UIhelper.customtext(text: "profile photo", height: 16),
+            Consumer<profilepro>(
+              builder: (context, provider, child) {
+                final imageFile = provider.image;
+
+                return Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(60),
+                    onTap: () {
+                      provider.pickImage();
+                    },
+                    child: CircleAvatar(
+                      radius: 50,
+                      backgroundColor: Colors.grey.shade300,
+                      backgroundImage: imageFile != null
+                          ? FileImage(imageFile)
+                          : null,
+                      child: imageFile == null
+                          ? const Icon(
+                              Icons.camera_alt,
+                              size: 30,
+                              color: Colors.grey,
+                            )
+                          : null,
+                    ),
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),
