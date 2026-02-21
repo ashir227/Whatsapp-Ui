@@ -67,7 +67,7 @@ class _Profile_infoState extends State<Profile_info> {
             ),
 
             SizedBox(height: 20),
-            TextField(),
+            TextField(decoration: InputDecoration()),
           ],
         ),
       ),
