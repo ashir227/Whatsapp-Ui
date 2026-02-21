@@ -48,7 +48,7 @@ class _Profile_infoState extends State<Profile_info> {
                       provider.pickImage();
                     },
                     child: CircleAvatar(
-                      radius: 50,
+                      radius: 70,
                       backgroundColor: Colors.grey.shade300,
                       backgroundImage: imageFile != null
                           ? FileImage(imageFile)
@@ -67,10 +67,14 @@ class _Profile_infoState extends State<Profile_info> {
             ),
 
             SizedBox(height: 150),
-            ElevatedButton(onPressed: () {}, child: Text("Next")),
           ],
         ),
       ),
+      floatingActionButton: UIhelper.customButton(
+        callback: () {},
+        buttonName: "Next",
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
