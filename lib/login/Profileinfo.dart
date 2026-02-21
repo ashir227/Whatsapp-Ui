@@ -34,6 +34,8 @@ class _Profile_infoState extends State<Profile_info> {
               height: 16,
             ),
             UIhelper.customtext(text: "profile photo", height: 16),
+            SizedBox(height: 40),
+
             Consumer<profilepro>(
               builder: (context, provider, child) {
                 final imageFile = provider.image;
@@ -63,6 +65,9 @@ class _Profile_infoState extends State<Profile_info> {
                 );
               },
             ),
+
+            SizedBox(height: 150),
+            ElevatedButton(onPressed: () {}, child: Text("Next")),
           ],
         ),
       ),
