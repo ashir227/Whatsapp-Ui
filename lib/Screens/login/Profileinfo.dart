@@ -72,6 +72,11 @@ class _Profile_infoState extends State<Profile_info> {
               width: 350,
               child: TextField(
                 decoration: InputDecoration(
+                  hintText: "Type your name here",
+
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey),
+                  ),
                   enabledBorder: UnderlineInputBorder(
                     borderSide: BorderSide(
                       color: const Color.fromARGB(255, 66, 164, 69),
