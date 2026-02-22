@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:whatsap/Screens/Chat/chat.dart';
 import 'package:whatsap/UIhelper/uihelp.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
@@ -85,7 +86,12 @@ class _Profile_infoState extends State<Profile_info> {
         ),
       ),
       floatingActionButton: UIhelper.customButton(
-        callback: () {},
+        callback: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Chatscr()),
+          );
+        },
         buttonName: "Next",
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
