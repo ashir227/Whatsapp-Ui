@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsap/UIhelper/uihelp.dart';
-import 'package:whatsap/login/loginscr.dart';
+import 'package:whatsap/Screens/login/loginscr.dart';
 import 'package:whatsap/provider/provider_class.dart';
 
 class Onboarding extends StatefulWidget {

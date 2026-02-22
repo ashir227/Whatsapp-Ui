@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsap/UIhelper/uihelp.dart';
-import 'package:whatsap/login/Profileinfo.dart';
+import 'package:whatsap/Screens/login/Profileinfo.dart';
 
 class Otp extends StatefulWidget {
   final String verificationId;
