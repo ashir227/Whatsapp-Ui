@@ -74,6 +74,7 @@ class _Profile_infoState extends State<Profile_info> {
                   enabledBorder: UnderlineInputBorder(
                     borderSide: BorderSide(
                       color: const Color.fromARGB(255, 66, 164, 69),
+                      width: 1.7,
                     ),
                   ),
                   border: UnderlineInputBorder(),
