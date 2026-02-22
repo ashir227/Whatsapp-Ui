@@ -68,24 +68,30 @@ class _Profile_infoState extends State<Profile_info> {
             ),
 
             SizedBox(height: 20),
-            SizedBox(
-              width: 350,
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: "Type your name here",
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 350,
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: "Type your name here",
 
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey),
-                  ),
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: const Color.fromARGB(255, 66, 164, 69),
-                      width: 1.7,
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey),
+                      ),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: const Color.fromARGB(255, 66, 164, 69),
+                          width: 1.7,
+                        ),
+                      ),
+                      border: UnderlineInputBorder(),
                     ),
                   ),
-                  border: UnderlineInputBorder(),
                 ),
-              ),
+                Image.asset("assets/images/happy-face 1.png"),
+              ],
             ),
           ],
         ),
@@ -99,6 +105,7 @@ class _Profile_infoState extends State<Profile_info> {
         },
         buttonName: "Next",
       ),
+
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
