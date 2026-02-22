@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:whatsap/Screens/Otp_scr.dart';
+import 'package:whatsap/OTP/Otp_scr.dart';
 import 'package:whatsap/UIhelper/uihelp.dart';
 import 'package:whatsap/provider/provider_class.dart';
 

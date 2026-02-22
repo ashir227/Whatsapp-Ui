@@ -67,7 +67,19 @@ class _Profile_infoState extends State<Profile_info> {
             ),
 
             SizedBox(height: 20),
-            TextField(decoration: InputDecoration()),
+            SizedBox(
+              width: 350,
+              child: TextField(
+                decoration: InputDecoration(
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: const Color.fromARGB(255, 66, 164, 69),
+                    ),
+                  ),
+                  border: UnderlineInputBorder(),
+                ),
+              ),
+            ),
           ],
         ),
       ),
