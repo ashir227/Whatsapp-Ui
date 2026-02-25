@@ -8,7 +8,12 @@ class Chatscr extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        bottom: TabBar(tabs: [Tab(icon: Icon(Icons.camera_alt))]),
+        bottom: TabBar(
+          tabs: [
+            Tab(icon: Icon(Icons.camera_alt)),
+            Tab(text: "Whatsapp"),
+          ],
+        ),
         toolbarHeight: 130,
         title: UIhelper.customtext(
           text: "Whatsapp",
