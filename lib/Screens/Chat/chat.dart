@@ -5,6 +5,8 @@ class Chatscr extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(backgroundColor: Colors.green));
+    return Scaffold(
+      appBar: AppBar(toolbarHeight: 130, backgroundColor: Colors.green),
+    );
   }
 }
